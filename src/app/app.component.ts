@@ -3,6 +3,7 @@ import { AppService } from './app.service';
 import { Data } from './app.model';
 import * as $ from 'jquery';
 import { AuthenticationService } from './authentication';
+import { UserService, User } from './users';
 
 @Component({
   selector: 'app-root',
@@ -51,15 +52,20 @@ export class AppComponent implements OnInit {
         <div class="item">
           <a routerLink="profile" routerLinkActive="active">
             <img class="ui avatar image" src="/assets/images/user-avatar-inverted.png">
-            <span>Bobby Smith</span>
+            <span>{{ user.fullName }}</span>
           </a>
         </div>
       <div>
     </div>
   `
 })
-export class AppHeaderComponent {
-  constructor(private authService: AuthenticationService) {}
+export class AppHeaderComponent implements OnInit {
+  private user: User;
+  constructor(private authService: AuthenticationService, private us: UserService) {}
+
+  ngOnInit() {
+    this.user = this.us.user;
+  }
 
   loggedIn() {
     return this.authService.isAuthenticated();

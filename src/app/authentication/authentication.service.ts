@@ -18,7 +18,7 @@ export class AuthenticationService {
 
   public clearUserDataAndRedirect() {
     localStorage.clear();
-    this.router.navigate(['/sessionexpired']);
+    this.router.navigate(['/login']);
   }
 
   /**
@@ -40,7 +40,7 @@ export class AuthenticationService {
         .subscribe((data) => this.handleLogout(data),
         (error) => {
           if (error.status === 401) {
-            this.router.navigate(['/sessionexpired']);
+            this.router.navigate(['/login']);
           }
         },
         () => console.log('got data')
@@ -79,15 +79,8 @@ export class AuthenticationService {
     if (res.status === 200) {
       const response = 'response';
       const user = 'user';
-      const tokenString = 'authentication_token';
-      const token = body[response][user][tokenString];
-      const username = body[response][user]['username'];
-      console.log('extractToken :: extracted token=', token);
-      const maxTokenExpiryTime =
-        Math.floor(new Date().getTime() / 1000) + Number(body[response][user]['token_age']);
-      localStorage.setItem('token', token);
-      localStorage.setItem('token_age', String(maxTokenExpiryTime));
-      localStorage.setItem('username', username);
+      const userString = JSON.stringify(body[response][user]);
+      localStorage.setItem('user', userString);
     }
   }
 
@@ -103,7 +96,7 @@ export class AuthenticationService {
     // if (curTime > expiryTime) {
     //   return true;
     // }
-    if (localStorage.getItem('token')) {
+    if (localStorage.getItem('user')) {
       // console.log('checkTokenExpired :: expired=false');
       return false;
     }

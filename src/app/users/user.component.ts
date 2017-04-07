@@ -28,11 +28,7 @@ import { UserService } from './user.service';
 export class UserProfileComponent implements OnInit {
     user: User;
     constructor(private us: UserService) {
-      this.user = {
-        username: 'bobby.smith@fabianware.io',
-        password: 'vocal123',
-        fullName: 'Bobby Smith'
-      };
+      this.user = this.us.user;
     }
 
     ngOnInit() {
