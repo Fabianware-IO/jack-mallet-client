@@ -26,6 +26,7 @@
     "ng-semantic": "https://github.com/vladotesanovic/ngSemantic/tarball/master",
     "rxjs": "^5.1.0",
     "semantic-ui": "^2.2.10",
+    "semantic-ui-css": "^2.2.10",
     "zone.js": "^0.8.4"
   },
   "devDependencies": {
