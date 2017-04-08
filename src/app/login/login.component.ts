@@ -31,9 +31,9 @@ import { UserService } from '../users';
     providers: [AuthenticationService]
 })
 export class LoginFormComponent {
-    private loginForm: FormGroup;
+    public loginForm: FormGroup;
     private color: string;
-    private loginText: string;
+    public loginText: string;
 
     constructor(private fb: FormBuilder,
         private as: AuthenticationService,
