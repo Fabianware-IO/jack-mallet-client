@@ -66,7 +66,7 @@ export class LoginFormComponent {
         return Observable.throw(errorMessage);
     }
 
-    private submit() {
+    public submit() {
         console.log('logging in');
         this.loginText = null;
         this.login();

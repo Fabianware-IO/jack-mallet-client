@@ -11,7 +11,7 @@ machine:
 dependencies:
   pre:
     - pip install awscli awsebcli
-    - npm i -g @angular/cli@1.0.0-rc.4
+    - npm i -g @angular/cli@1.0.0-rc.2
     - npm i
     - ng build
     - docker build --rm=false -t fabianwareio/jackmallet-client:$CIRCLE_SHA1 .
