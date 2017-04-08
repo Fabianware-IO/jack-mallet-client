@@ -51,7 +51,7 @@ export class LoginFormComponent {
             .subscribe(
                 success => {
                     console.log('login :: setting user to ', this.loginForm.value);
-                    this.us.user = this.loginForm.value;
+                    // this.us.user = this.loginForm.value;
                     this.router.navigate(['/dashboard']);
                 },
                 error => this.handleError(error)
